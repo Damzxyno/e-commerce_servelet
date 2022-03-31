@@ -1,9 +1,8 @@
 package com.example.damzxynostore.controller.admin;
 
-import java.io.*;
-
 import com.example.damzxynostore.dao.AdminDAO;
 import com.example.damzxynostore.entities.AdminDTO;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -25,21 +24,21 @@ public class AdminLoginServlet extends HttpServlet {
         out.println("<html><body>");
         out.println("<h1>" + "Damzxyno Administration Page" + "</h1>");
         out.println("</body></html>");
-        String page = "admin/dashboard.jsp";
 
         AdminDAO adminDAO = new AdminDAO();
         System.out.println(request.getParameter("email"));
         AdminDTO adminDTO = adminDAO.get(request.getParameter("email"));
 
-        System.out.println(adminDTO.getPassword());
+        if (adminDTO.getPassword().equals(request.getParameter("password"))) {
+            HttpSession httpSession = request.getSession();
+            httpSession.setAttribute("role", "admin");
+            httpSession.setAttribute("username", adminDTO.getFirstName());
+            String dashboardPage = "admin/dashboard.jsp";
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher(dashboardPage);
+            requestDispatcher.forward(request, response);
+        }
 
-        if (adminDTO.getPassword().equals(request.getParameter("password"))) System.out.println("Oun sise");
 
-
-        //get request data
-        String numEmail = request.getParameter("numEmail");
-        String password = request.getParameter("password");
-        response.sendRedirect(page);
 
     }
 

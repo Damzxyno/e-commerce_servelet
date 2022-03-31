@@ -124,7 +124,7 @@
             <a href="#" class="float-right">Forgot Password?</a>
         </div>
     </form>
-    <p class="text-center small">Don't have an account? <a href="create_account.jsp">Sign up here!</a></p>
+    <p class="text-center small">Don't have an account? <a href="register.jsp">Sign up here!</a></p>
 </div>
 </body>
 </html>

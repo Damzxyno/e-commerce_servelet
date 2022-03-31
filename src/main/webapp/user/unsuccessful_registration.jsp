@@ -13,6 +13,6 @@
 <body>
 <h1> unsuccessful Registration</h1>
 <h2>Something went wrong!</h2>
-<a href="../index.jsp">Go back to Main page to start Shopping</a>
+<a href="index.jsp">Go back to Main page to start Shopping</a>
 </body>
 </html>

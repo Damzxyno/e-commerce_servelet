@@ -8,9 +8,31 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+
+    <%
+        String login = "login.jsp";
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(login);
+        Object role =  session.getAttribute("role");
+        if (role == null) requestDispatcher.forward(request, response);
+    %>
     <title>Add new product</title>
+    <style>
+        form{
+
+        }
+
+        label {
+            padding-bottom: 5px;
+        }
+
+    </style>
 </head>
 <body>
-
+    <form action="/AddNewProductServlet" method="post" >
+       <label for="product_name">Product Name: </label> <input name="product_name" class="" type="" id="product_name" required />
+       <label for="product_price">Product Price: </label> <input name="product_price" class="" type="number" id="product_price" required />
+       <label for="product_description">Product Description: </label> <input name="product_description" class="" type="" id="product_description" required />
+        <button type="submit">Save</button>
+    </form>
 </body>
 </html>

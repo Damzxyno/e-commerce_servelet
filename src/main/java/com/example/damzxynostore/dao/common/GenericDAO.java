@@ -32,5 +32,6 @@ public abstract class GenericDAO<T> {
         }
     }
 
-    public abstract boolean create(T element);
+    abstract public boolean create(T element);
+//    abstract T get (T element);
 }

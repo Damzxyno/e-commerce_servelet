@@ -6,7 +6,10 @@ import com.example.damzxynostore.utils.PasswordHashing;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerDAO extends GenericDAO <CustomerDTO> {
 
@@ -63,4 +66,29 @@ public class CustomerDAO extends GenericDAO <CustomerDTO> {
         return customerDTO;
     }
 
+    public List<CustomerDTO> listAll (){
+        List<CustomerDTO> customerDTOS = new ArrayList<>();
+
+        connectToDataBase();
+        try {
+            String query = "SELECT * FROM customer";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                CustomerDTO customerDTO = new CustomerDTO();
+                customerDTO.setCustomerId(resultSet.getInt("customer_id"));
+                customerDTO.setAddress(resultSet.getString("address"));
+                customerDTO.setEmail(resultSet.getString("email"));
+                customerDTO.setFirstName(resultSet.getString("first_name"));
+                customerDTO.setLastName(resultSet.getString("last_name"));
+                customerDTO.setPhone(resultSet.getString("phone"));
+
+                customerDTOS.add(customerDTO);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return customerDTOS;
+    }
 }

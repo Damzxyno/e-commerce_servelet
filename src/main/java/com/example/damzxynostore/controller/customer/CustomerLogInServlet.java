@@ -30,6 +30,9 @@ public class CustomerLogInServlet extends HttpServlet {
         if (customerDTO == null ) {
             out.println("<h1>" + "Email doesn't exit in the database!" + "</h1>");
         } else if (customerDTO.getPassword().equals(request.getParameter("password"))) {
+            HttpSession session = request.getSession();
+            session.setAttribute("role", "user");
+            session.setAttribute("username", customerDTO.getFirstName());
             response.sendRedirect(page);
         } else {
             out.println("<h1>" + "Password is incorrect!" + "</h1>");

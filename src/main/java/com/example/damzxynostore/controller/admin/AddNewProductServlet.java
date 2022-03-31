@@ -1,7 +1,9 @@
 package com.example.damzxynostore.controller.admin;
 
 import com.example.damzxynostore.dao.CustomerDAO;
+import com.example.damzxynostore.dao.ProductDAO;
 import com.example.damzxynostore.entities.CustomerDTO;
+import com.example.damzxynostore.entities.ProductDTO;
 import com.example.damzxynostore.utils.PasswordHashing;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -22,47 +24,20 @@ public class AddNewProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
 
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + "Add New Product" + "</h1>");
-        out.println("</body></html>");
+//        PrintWriter out = response.getWriter();
+//        out.println("<html><body>");
+//        out.println("<h1>" + "Add New Product" + "</h1>");
+//        out.println("</body></html>");
 
         HttpSession httpSession = request.getSession();
 
-        //fetch data from registration page
-        String firstName = request.getParameter("first_name");
-        System.out.println(firstName);
-        String lastName = request.getParameter("last_name");
-        String address = request.getParameter("address");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String phone = request.getParameter("phone");
-
-        password = PasswordHashing.encryptPassword(password);
-
-
-
-        CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.setAddress(address);
-        customerDTO.setEmail(email);
-        customerDTO.setLastName(lastName);
-        customerDTO.setFirstName(firstName);
-        customerDTO.setPhone(phone);
-        customerDTO.setPassword(password);
-        customerDTO.setDate(new Date());
-
-
-        CustomerDAO customerDAO = new CustomerDAO();
-
-
-        if (!customerDAO.create(customerDTO)) {
-            String errorMessage = "failed";
-            httpSession.setAttribute("Registration Error", errorMessage);
-            response.sendRedirect("user/successful_registration.jsp");
-        }else{
-            httpSession.setAttribute("Registration Error", "successfully registered");
-            response.sendRedirect("user/unsuccessful_registration.jsp");
-        }
-
+       ProductDTO productDTO = new ProductDTO();
+       productDTO.setProductName(request.getParameter("product_name"));
+       productDTO.setPrice(Double.parseDouble(request.getParameter("product_price")));
+//       productDTO.setCategoryId(Integer.parseInt(request.getParameter("product_category")));
+       productDTO.setCategoryId(00000);
+       productDTO.setDescription(request.getParameter("product_description"));
+        ProductDAO productDAO = new ProductDAO();
+        productDAO.create(productDTO);
     }
 }

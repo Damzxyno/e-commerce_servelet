@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Home | Damzxyno Store</title>
 </head>
 <body>
-
-<h1><%=  %> </h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+   <jsp:include page="header.jsp" />
+   <jsp:include page="main.jsp" />
+   <jsp:include page="footer.jsp" />
 </body>
 </html>
