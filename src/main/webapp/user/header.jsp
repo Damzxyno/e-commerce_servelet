@@ -1,11 +1,15 @@
+<% String display = null;
+    String role = (String) session.getAttribute("role");
+    if (role == null){
+        display = "<a href='user/login.jsp'>Sign In</a> |" +
+                " <a href='user/register.jsp'>Register</a>";
+    } else if (role.equals("user")) {
+        display = "Welcome " + session.getAttribute("username") + " | " +
+                "<a href=''>Log Out</a>";
+    }
+%>
+
 <div align="center">
-    <h1 >DAMZXYNO STORE</h1>
-    <input type="text" name="keyword" size ="50" />
-    <input type="button" value="Search">
-    <br>
-    <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="user/login.jsp">Sign In</a> |
-    <a href="user/register.jsp">Register</a> |
-    <a href="#">Cart</a>
+    <h1 style="color: red">WELCOME TO DAMZXYNO STORE</h1>
+    <div><%=display%></div>&nbsp;&nbsp;&nbsp;&nbsp;
 </div>

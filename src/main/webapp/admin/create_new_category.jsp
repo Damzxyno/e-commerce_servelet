@@ -17,6 +17,9 @@
     %>
 </head>
 <body>
+<jsp:include page="utils/header.jsp" />;
+<hr>
+<h2>Administrative Backend : Create New Category</h2>
 <form action="/AddNewCategoryServlet" method="post" >
     <label for="category_name">Category Name: </label> <input name="category_name" class="" type="" id="category_name" required/>
     <button type="submit">Save</button>

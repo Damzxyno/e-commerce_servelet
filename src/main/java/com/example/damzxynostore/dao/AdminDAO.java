@@ -2,8 +2,6 @@ package com.example.damzxynostore.dao;
 
 import com.example.damzxynostore.dao.common.GenericDAO;
 import com.example.damzxynostore.entities.AdminDTO;
-import com.example.damzxynostore.utils.PasswordHashing;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -42,7 +40,6 @@ public class AdminDAO extends GenericDAO<AdminDTO> {
                 adminDTO = new AdminDTO();
                 adminDTO.setAdminId(resultSet.getInt("admin_id"));
                 adminDTO.setEmail(resultSet.getString("email"));
-//                adminDTO.setPassword(PasswordHashing.decryptPassword(resultSet.getString("password")));
                 adminDTO.setPassword(resultSet.getString("password"));
                 adminDTO.setFirstName(resultSet.getString("first_name"));
                 adminDTO.setLastName(resultSet.getString("last_name"));

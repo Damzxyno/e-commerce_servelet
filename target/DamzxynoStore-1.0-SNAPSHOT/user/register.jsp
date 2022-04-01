@@ -128,7 +128,7 @@
             <input type="password" class="form-control" name="password" placeholder="Password" required="required">
         </div>
         <div class="form-group">
-            <input type="number" class="form-control" name="phone" placeholder="Phone" required="required">
+            <input type="tel" class="form-control" name="phone" placeholder="Phone" required="required">
         </div>
         <div class="form-group">
             <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>

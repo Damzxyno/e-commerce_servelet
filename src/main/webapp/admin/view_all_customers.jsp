@@ -17,7 +17,8 @@
     %>
 </head>
 <body>
-    <h1 align="center">Damzxyno Store</h1>
+<jsp:include page="utils/header.jsp" />;
+    <hr>
     <h2>Administrative Backend : Customers</h2>
     <jsp:include page="utils/customers.jsp" />
 

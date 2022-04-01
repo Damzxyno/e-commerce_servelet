@@ -1,7 +1,9 @@
 package com.example.damzxynostore.controller.admin;
 
+import com.example.damzxynostore.dao.CategoryDAO;
 import com.example.damzxynostore.dao.CustomerDAO;
 import com.example.damzxynostore.dao.ProductDAO;
+import com.example.damzxynostore.entities.CategoryDTO;
 import com.example.damzxynostore.entities.CustomerDTO;
 import com.example.damzxynostore.entities.ProductDTO;
 import com.example.damzxynostore.utils.PasswordHashing;
@@ -22,22 +24,26 @@ public class AddNewProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
-
-//        PrintWriter out = response.getWriter();
-//        out.println("<html><body>");
-//        out.println("<h1>" + "Add New Product" + "</h1>");
-//        out.println("</body></html>");
-
-        HttpSession httpSession = request.getSession();
-
+        CategoryDTO categoryDTO = new CategoryDAO().get(request.getParameter("product_category"));
        ProductDTO productDTO = new ProductDTO();
        productDTO.setProductName(request.getParameter("product_name"));
        productDTO.setPrice(Double.parseDouble(request.getParameter("product_price")));
-//       productDTO.setCategoryId(Integer.parseInt(request.getParameter("product_category")));
-       productDTO.setCategoryId(00000);
+       productDTO.setCategoryId(categoryDTO.getCategoryId());
        productDTO.setDescription(request.getParameter("product_description"));
-        ProductDAO productDAO = new ProductDAO();
-        productDAO.create(productDTO);
+       ProductDAO productDAO = new ProductDAO();
+       boolean createdProduct = productDAO.create(productDTO);
+
+       response.setContentType("text/html");
+       PrintWriter printWriter = response.getWriter();
+       printWriter.println("<html><body><center><h1>Damzxyno Store</h1></center>");
+        printWriter.println("\t");
+        printWriter.println(productDTO.getProductName());
+        if (createdProduct) {
+           printWriter.println(" was successfully created! <br />");
+       }   else {
+            printWriter.println(" already exist!");
+        }
+        printWriter.println("<a href = 'admin/create_new_product.jsp'>Click here to create another product</a>");
+        printWriter.println("</body></html>");
     }
 }

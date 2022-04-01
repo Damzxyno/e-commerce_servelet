@@ -22,13 +22,14 @@ public class CustomerLogInServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CustomerDAO customerDAO = new CustomerDAO();
         CustomerDTO customerDTO = customerDAO.get(request.getParameter("email"));
-        String page = "admin/dashboard.jsp";
+        String page = "user/index.jsp";
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
 
         if (customerDTO == null ) {
-            out.println("<h1>" + "Email doesn't exit in the database!" + "</h1>");
+            out.println("<center><h1>Damzxyno Store</h1></center>");
+            out.println("<h3 style = 'color: red;' >" + "Email doesn't exit in the database!" + "</h3>");
         } else if (customerDTO.getPassword().equals(request.getParameter("password"))) {
             HttpSession session = request.getSession();
             session.setAttribute("role", "user");
@@ -37,6 +38,7 @@ public class CustomerLogInServlet extends HttpServlet {
         } else {
             out.println("<h1>" + "Password is incorrect!" + "</h1>");
         }
+        out.println("<a href = 'user/login.jsp'>Click here to try again!</a>");
         out.println("</body></html>");
 
     }
