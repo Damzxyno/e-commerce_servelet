@@ -34,7 +34,7 @@
 <hr>
 <h2>Administrative Backend : Create New Product</h2>
     <form action="/AddNewProductServlet" method="post" >
-       <label for="product_name">Product Name: </label> <input name="product_name" class="" type="" id="product_name" required />
+       <label for="product_name">Product Name: </label> <input name="product_name" class="" type="text" id="product_name" required />
        <label for="product_price">Product Price: </label> <input name="product_price" class="" type="number" id="product_price" required />
         <p>Product Category: <jsp:include page="utils/categories.jsp" /> </p>
         <label for="product_description">Product Description: </label> <input name="product_description" class="" type="" id="product_description" required />

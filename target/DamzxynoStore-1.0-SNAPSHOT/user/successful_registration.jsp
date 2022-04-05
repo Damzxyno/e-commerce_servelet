@@ -16,6 +16,6 @@
         HttpSession session1 = request.getSession();
         System.out.println(session1.getAttribute("email"));
     %>
-    <a href="index.jsp">Go back to Main page to start Shopping</a>
+    <a href="${pageContext.request.contextPath}index.jsp">Go back to Main page to start Shopping</a>
 </body>
 </html>

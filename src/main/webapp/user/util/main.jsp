@@ -10,15 +10,25 @@
         gap: 15px;
         justify-content: center;
     }
+
+
     .product_box{
-        background-color: black;
-        color: wheat;
+        background-color: #70c5c0;
+        color: crimson;
         width: 180px;
-        height: 200px;
+        height: 220px;
         border: solid 3px brown;
         border-radius: 25px;
         padding: 2px;
+    }
 
+    button {
+        margin-bottom: 5px;
+        background-color: #5cb85c;
+    }
+
+    button:visited{
+        background-color: blue;
     }
 </style>
 <%
@@ -37,12 +47,17 @@
                 .append("<p style = 'color: green;'>").append(price).append("</p>");
 
         if (session.getAttribute("role") != null){
-            stringBuilder.append("<label for = 'add_to_cart'>Add to Cart? </label>")
-                    .append("<input type = 'checkbox' value = ")
-                    .append(productName).append("' id = '").append(productName).append("'/>");
+            stringBuilder.append("<button name = 'add_to_wishlist' value = '")
+                    .append(productDTO.getProductId()).append("' id = '").append(productName).append("'>Like</button><br/ >")
+                    .append("<button name = 'add_to_cart' value = '")
+                    .append(productDTO.getProductId()).append("' id = '").append(productName).append("'>Add to Cart</button><br/ >");
         }
 
         stringBuilder.append("</div>");
+
+        if (session.getAttribute("role") != null){
+            stringBuilder.append("<div> <i class=\"fa-regular fa-thumbs-up\"></i></div>");
+        }
     }
 %>
 

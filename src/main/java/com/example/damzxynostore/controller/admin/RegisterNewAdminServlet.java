@@ -43,7 +43,6 @@ public class RegisterNewAdminServlet extends HttpServlet {
 
         AdminDAO adminDAO = new AdminDAO();
 
-
         if (adminDAO.create(adminDTO)) {
             response.sendRedirect("user/successful_registration.jsp");
         }else{

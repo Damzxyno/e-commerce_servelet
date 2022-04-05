@@ -5,7 +5,9 @@
                 " <a href='user/register.jsp'>Register</a>";
     } else if (role.equals("user")) {
         display = "Welcome " + session.getAttribute("username") + " | " +
-                "<a href=''>Log Out</a>";
+                "<a href ='/WishlistServlet'>My Wishlist</a> | " +
+
+                "<a href='/LogOutServlet'>Log Out</a>";
     }
 %>
 

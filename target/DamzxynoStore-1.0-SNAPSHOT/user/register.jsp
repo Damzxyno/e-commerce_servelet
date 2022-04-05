@@ -112,7 +112,7 @@
 <body>
 <div class="signup-form">
 
-    <form action="<%=request.getContextPath()%>/CustomerCreateAccountServlet" method="POST">
+    <form action="/CustomerCreateAccountServlet" method="POST">
         <h2>Register</h2>
         <p class="hint-text">Create your account. It's free and only takes a minute.</p>
         <div class="form-group">

@@ -17,7 +17,7 @@
     <h2>Administrative Log In</h2>
 </center>
     <h3>Log in page!</h3>
-        <form action="<%=request.getContextPath()%>/AdminLoginServlet" method="POST">
+        <form action="/AdminLoginServlet" method="POST">
             <input id="email_input" class="form-control form-control-lg" type="text" name="email" placeholder="Email address"  required/>
             <input id="password_input" class="form-control form-control-lg" type="password" name="password" placeholder="Password" required/>
             <button id="btn1" type="submit" class="btn btn-primary btn-lg btn-block">Log in</button>

@@ -13,7 +13,6 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 
 @WebServlet(name = "AddNewProductServlet", value = "/AddNewProductServlet")
 public class AddNewProductServlet extends HttpServlet {

@@ -12,11 +12,6 @@ import java.util.List;
 
 public class ProductDAO extends GenericDAO<ProductDTO> {
 
-//    public void create (String  ) {
-//
-//
-//
-
     @Override
     public boolean create(ProductDTO productDTO) {
         connectToDataBase();
@@ -40,6 +35,29 @@ public class ProductDAO extends GenericDAO<ProductDTO> {
         return false;
     }
 
+
+    public ProductDTO get (int productId){
+        connectToDataBase();
+        ProductDTO productDTO = null;
+        try {
+            String query = "SELECT * FROM product WHERE product_id = '" + productId + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            if (resultSet.next()) {
+                productDTO = new ProductDTO();
+                productDTO.setProductId(resultSet.getInt("product_id"));
+                productDTO.setProductName(resultSet.getString("product_name"));
+                productDTO.setPrice(resultSet.getDouble("price"));
+                productDTO.setCategoryId(resultSet.getInt("category_id"));
+            }
+            System.out.println(productDTO);
+            closeDatabaseConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return productDTO;
+    }
 
     public List<ProductDTO> listAll (){
         List<ProductDTO> productDTOS = new ArrayList<>();
@@ -76,5 +94,21 @@ public class ProductDAO extends GenericDAO<ProductDTO> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public double getPrice (int productID){
+        connectToDataBase();
+        String query = "Select price FROM product WHERE product_id = '" + productID + "'";
+        try (Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(query);
+            resultSet.next();
+            double price = resultSet.getDouble("price");
+
+            closeDatabaseConnection();
+            return price;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

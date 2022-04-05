@@ -11,10 +11,6 @@ public class OrderTableDTO {
     private int orderId;
     private int customerId;
     private Date orderDate;
-    private String shippingAddress;
-    private String recipientName;
-    private String recipientPhone;
-    private String paymentMethod;
     private double orderTotal;
-    private int orderStatus;
+    private String orderStatus;
 }

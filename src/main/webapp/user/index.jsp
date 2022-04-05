@@ -4,10 +4,14 @@
 <html>
 <head>
     <title>Home | Damzxyno Store</title>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/display.css">
 </head>
 <body>
-   <jsp:include page="header.jsp" />
-   <jsp:include page="main.jsp" />
-   <jsp:include page="footer.jsp" />
+   <jsp:include page="util/header.jsp" />
+   <form action="${request.getContextPath()}/SaveProductServlet" method="post">
+       <jsp:include page="util/main.jsp" />
+   </form>
+   <jsp:include page="util/footer.jsp" />
 </body>
 </html>

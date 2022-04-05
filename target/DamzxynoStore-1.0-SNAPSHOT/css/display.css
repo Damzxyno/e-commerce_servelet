@@ -1,0 +1,25 @@
+.product_box_container{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+
+.product_box{
+    background-color: #70c5c0;
+    color: crimson;
+    width: 180px;
+    height: 220px;
+    border: solid 3px brown;
+    border-radius: 25px;
+    padding: 2px;
+}
+
+button {
+    margin-bottom: 5px;
+    background-color: #5cb85c;
+}
+
+button:visited{
+    background-color: blue;
+}

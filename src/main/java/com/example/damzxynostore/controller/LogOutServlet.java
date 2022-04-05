@@ -1,4 +1,4 @@
-package com.example.damzxynostore.controller.admin;
+package com.example.damzxynostore.controller;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -10,9 +10,10 @@ import java.io.IOException;
 public class LogOutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getSession().invalidate();
-        String loginPage = "admin/login.jsp";
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(loginPage);
+        HttpSession session = request.getSession();
+        String page = (String) session.getAttribute("homepage");
+        session.invalidate();
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);
         requestDispatcher.forward(request, response);
     }
 

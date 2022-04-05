@@ -34,6 +34,8 @@ public class CustomerLogInServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("role", "user");
             session.setAttribute("username", customerDTO.getFirstName());
+            session.setAttribute("userId", customerDTO.getCustomerId());
+            session.setAttribute("homepage", "user/index.jsp");
             response.sendRedirect(page);
         } else {
             out.println("<h1>" + "Password is incorrect!" + "</h1>");

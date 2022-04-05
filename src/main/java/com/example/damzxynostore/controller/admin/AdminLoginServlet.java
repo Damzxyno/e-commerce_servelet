@@ -35,6 +35,7 @@ public class AdminLoginServlet extends HttpServlet {
             HttpSession httpSession = request.getSession();
             httpSession.setAttribute("role", "admin");
             httpSession.setAttribute("username", adminDTO.getFirstName());
+            httpSession.setAttribute("homepage", "admin/login.jsp");
             String dashboardPage = "admin/dashboard.jsp";
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(dashboardPage);
             requestDispatcher.forward(request, response);
